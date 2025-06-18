@@ -1,0 +1,30 @@
+@mixin dots($bg: var(--mono-05), $rgb: var(--mono-rgb-0), $int: var(--accent-dots-intensity)) {
+  background-color: #{$bg};
+  background-image:
+    radial-gradient(rgb(#{$rgb}, #{$int}) 10%, transparent 20%),
+    radial-gradient(rgb(#{$rgb}, #{$int}) 10%, transparent 20%);
+  background-position:
+    0 0,
+    5px 5px;
+  background-size: 10px 10px;
+}
+
+@mixin curvy($color: var(--background-modifier-border), $pos: "top") {
+  --accent-curvy: repeat-x
+    conic-gradient(from calc(145deg / -2) at bottom, #0000, #000 1deg calc(145deg - 1deg), #0000 145deg);
+
+  display: block;
+  height: calc(2.5px + 15px / (2 * tan(145deg / 2)));
+  content: "";
+  background: #{$color};
+  mask:
+    50% calc(-1 * 2.5px) / 15px var(--accent-curvy) exclude,
+    50% / 15px var(--accent-curvy);
+
+  @if $pos == "top" {
+    margin-bottom: var(--size-4-3);
+  } @else {
+    padding-bottom: var(--size-4-3);
+    margin-bottom: calc(var(--p-spacing) + var(--size-4-2));
+  }
+}

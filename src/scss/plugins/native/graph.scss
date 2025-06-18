@@ -1,0 +1,85 @@
+.graph-controls {
+  top: var(--size-4-2);
+  right: var(--size-4-2);
+
+  &.is-close {
+    padding: 0;
+    background-color: var(--background-primary) !important;
+    border: unset;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    box-shadow: var(--input-shadow);
+
+    .clickable-icon {
+      padding: var(--size-4-2);
+      margin: 0;
+      background-color: var(--interactive-normal);
+      opacity: 1;
+
+      .svg-icon {
+        --icon-size: var(--icon-s);
+      }
+
+      &:is(:focus, :focus-within, :hover) {
+        color: var(--text-normal);
+        background-color: var(--interactive-hover);
+      }
+
+      &.mod-open {
+        border-bottom: 1px solid var(--background-modifier-border);
+        border-radius: var(--radius-m) var(--radius-m) 0 0;
+      }
+
+      &.mod-animate {
+        border-radius: 0 0 var(--radius-m) var(--radius-m);
+      }
+    }
+  }
+}
+
+body:not(.is-mobile) .mod-sidedock .workspace-leaf-content[data-type="graph"] > .view-content {
+  background-color: var(--background-primary);
+  border: var(--tab-outline-width) solid var(--tab-outline-color);
+  border-radius: var(--radius-m);
+}
+
+/**
+ * Minimize controls
+ */
+body:not(.no-min-graph-controls) {
+  .graph-controls.is-close {
+    overflow: visible;
+
+    &::before {
+      position: absolute;
+      inset: calc(var(--size-4-2) * -1);
+      content: "";
+    }
+
+    .clickable-icon {
+      position: relative;
+      z-index: 1;
+    }
+
+    .clickable-icon,
+    .svg-icon {
+      transition-delay: var(--transition-delay-fast);
+      transition-duration: var(--transition-fast);
+      transition-property: width, padding-inline;
+    }
+
+    &:not(:focus, :focus-within, :hover) {
+      .clickable-icon {
+        padding-inline: 1.5px;
+      }
+
+      .svg-icon {
+        width: 0;
+      }
+
+      > * {
+        pointer-events: none;
+      }
+    }
+  }
+}

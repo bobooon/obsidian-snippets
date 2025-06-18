@@ -1,0 +1,60 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.markdown-reading-view,
+.markdown-embed:not(.is-editing) {
+  .callout[data-callout*="<code>"] {
+    outline: unset;
+    border-bottom: unset;
+    border-radius: var(--callout-radius);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: unset;
+  }
+
+  .el-div:has(.callout[data-callout*="<code>"]) {
+    + .el-pre {
+      padding: 0 var(--size-4-5) var(--size-4-4);
+      margin-top: calc(var(--p-spacing-tight) * -1);
+      background-color: rgb(var(--color-blue-rgb), var(--callout-background-opacity));
+      border: var(--callout-border-width) solid rgb(var(--color-blue-rgb), var(--callout-border-opacity));
+      border-top: unset;
+      border-bottom-right-radius: var(--code-radius);
+      border-bottom-left-radius: var(--code-radius);
+
+      pre {
+        margin: 0;
+      }
+    }
+  }
+
+  @each $color in $colors {
+    .el-div:has(.callout[data-callout*="<code>"]):has(.callout[data-callout*="<#{'' + $color}>"]) + .el-pre {
+      --text-selection: rgb(var(--color-#{$color}-rgb), var(--callout-background-opacity));
+
+      background-color: rgb(var(--color-#{$color}-rgb), var(--callout-background-opacity));
+
+      & {
+        border-color: rgb(var(--color-#{$color}-rgb), var(--callout-border-opacity));
+      }
+    }
+  }
+}
+
+/**
+ * Dots accent
+ */
+body.callout-accent-dots {
+  .markdown-reading-view,
+  .markdown-embed:not(.is-editing) {
+    .el-div:has(.callout[data-callout*="<code>"]) + .el-pre {
+      @include dots($bg: rgb(var(--color-blue-rgb), var(--callout-background-opacity)));
+    }
+
+    @each $color in $colors {
+      .el-div:has(.callout[data-callout*="<code>"]):has(.callout[data-callout*="<#{'' + $color}>"]) + .el-pre {
+        @include dots($bg: rgb(var(--color-#{$color}-rgb), var(--callout-background-opacity)));
+      }
+    }
+  }
+}

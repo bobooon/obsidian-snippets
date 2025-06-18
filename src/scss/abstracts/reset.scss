@@ -1,0 +1,24 @@
+body.mod-macos {
+  .view-content,
+  .view-header,
+  .workspace,
+  .workspace-fake-target-overlay,
+  .workspace-leaf,
+  .workspace-leaf-resize-handle,
+  .workspace-ribbon,
+  .workspace-ribbon::before,
+  .workspace-split,
+  .workspace-split.mod-sidedock .workspace-sidedock-vault-profile,
+  .workspace-tab-header-container,
+  .workspace-tabs {
+    background-color: transparent;
+  }
+
+  .workspace-leaf-resize-handle,
+  .workspace-ribbon,
+  .workspace-ribbon::before,
+  .workspace-split.mod-sidedock .workspace-sidedock-vault-profile,
+  .workspace-tab-header-container {
+    border-color: transparent;
+  }
+}

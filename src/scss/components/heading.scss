@@ -1,0 +1,98 @@
+@use "sass:list";
+@use "../abstracts/mixins" as *;
+
+body {
+  --heading-spacing: calc(var(--p-spacing) * 1.75);
+
+  --h1-font: "SF Pro Display", var(--font-text);
+  --h2-font: var(--h1-font);
+  --h3-font: var(--h1-font);
+  --h4-font: var(--h1-font);
+  --h5-font: var(--h1-font);
+  --h6-font: var(--h1-font);
+
+  --h1-size: 1.7em;
+  --h2-size: 1.5em;
+  --h3-size: 1.4em;
+  --h4-size: 1.3em;
+  --h5-size: 1.2em;
+  --h6-size: 1.1em;
+
+  --h1-line-height: var(--line-height-tight);
+  --h2-line-height: var(--line-height-tight);
+  --h3-line-height: var(--line-height-tight);
+  --h4-line-height: var(--line-height-tight);
+  --h5-line-height: var(--line-height-tight);
+  --h6-line-height: var(--line-height-tight);
+
+  --h1-weight: var(--font-semibold);
+  --h2-weight: var(--font-semibold);
+  --h3-weight: var(--font-semibold);
+  --h4-weight: var(--font-semibold);
+  --h5-weight: var(--font-semibold);
+  --h6-weight: var(--font-semibold);
+
+  --h1-color: var(--mono-90);
+  --h2-color: var(--mono-90);
+  --h3-color: var(--mono-90);
+  --h4-color: var(--mono-85);
+  --h5-color: var(--mono-75);
+  --h6-color: var(--mono-60);
+}
+
+.inline-title {
+  margin-bottom: var(--p-spacing);
+}
+
+.inline-title,
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+.HyperMD-header {
+  text-transform: unset !important;
+  letter-spacing: 0.012em !important;
+  text-wrap: pretty;
+}
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: var(--heading-spacing);
+}
+
+/**
+ * Heading accents
+ */
+@each $heading in (1, 2, 3, 4, 5, 6) {
+  $selectors: (".markdown-rendered h#{$heading}", ".markdown-source-view.is-live-preview .HyperMD-header-#{$heading}");
+
+  @if $heading == 1 {
+    $selectors: list.append($selectors, ".inline-title");
+  }
+
+  body.#{"h" + $heading}-accent-border-top {
+    #{$selectors} {
+      padding-top: var(--size-4-3);
+      border-top: var(--divider-width) solid var(--background-modifier-border);
+    }
+  }
+
+  body.#{"h" + $heading}-accent-border-bottom {
+    #{$selectors} {
+      padding-bottom: var(--size-4-3);
+      border-bottom: var(--divider-width) solid var(--background-modifier-border);
+    }
+  }
+
+  body.#{"h" + $heading}-accent-curvy-top {
+    #{$selectors} {
+      &::before {
+        @include curvy($pos: "top");
+      }
+    }
+  }
+
+  body.#{"h" + $heading}-accent-curvy-bottom {
+    #{$selectors} {
+      &::after {
+        @include curvy($pos: "bottom");
+      }
+    }
+  }
+}

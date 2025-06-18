@@ -1,0 +1,11 @@
+.pdf-embed:not(.canvas-node-content) {
+  border-radius: var(--radius-m);
+}
+
+.pdf-toolbar {
+  background-color: var(--pdf-sidebar-background);
+}
+
+.pdf-sidebar-container {
+  box-shadow: var(--shadow-l);
+}

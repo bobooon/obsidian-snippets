@@ -1,0 +1,65 @@
+@use "../abstracts/mixins" as *;
+
+.markdown-embed-link,
+.file-embed-link {
+  border-radius: var(--radius-m);
+}
+
+.inline-embed {
+  padding: var(--size-4-5);
+  background-color: transparent;
+  border: unset;
+
+  &::before {
+    --notch-width: var(--size-4-4);
+    --notch-height: var(--size-4-4);
+    --notch-radius: var(--radius-m);
+    --notch-inner-radius: var(--radius-xl);
+    --notch-edge: calc(2 * var(--notch-radius)) calc(2 * var(--notch-radius)) radial-gradient(#000 70%, #0000 72%);
+    --notch-inner-edge: conic-gradient(at calc(100% - var(--notch-radius)) var(--notch-radius), #0000 25%, #000 0);
+    --notch-diameter: (var(--notch-inner-radius) + var(--notch-radius));
+
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background-color: var(--mono-05);
+    border-radius: var(--radius-m);
+    mask:
+      calc(100% - var(--notch-diameter) - var(--notch-width)) 0 / var(--notch-edge),
+      100% calc(var(--notch-diameter) + var(--notch-height)) / var(--notch-edge),
+      radial-gradient(var(--notch-inner-radius) at 100% 0, #0000 99%, #000 calc(100% + 1px))
+        calc(-1 * var(--notch-radius) - var(--notch-width)) calc(var(--notch-radius) + var(--notch-height)),
+      var(--notch-inner-edge) calc(-1 * var(--notch-diameter) - var(--notch-width)) 0,
+      var(--notch-inner-edge) 0 calc(var(--notch-diameter) + var(--notch-height));
+    mask-repeat: no-repeat;
+  }
+
+  .markdown-embed-title {
+    padding-right: var(--size-4-9);
+    text-wrap: pretty;
+    white-space: wrap;
+  }
+
+  .markdown-embed-content {
+    max-height: unset;
+  }
+
+  .markdown-embed-content,
+  .markdown-preview-view {
+    overflow: visible;
+  }
+}
+
+/**
+ * Dots accent
+ */
+body.blockquote-accent-dots {
+  .inline-embed::before {
+    @include dots;
+  }
+
+  .inline-embed .inline-embed::before {
+    background-image: unset;
+  }
+}

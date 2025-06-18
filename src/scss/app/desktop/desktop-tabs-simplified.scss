@@ -1,0 +1,71 @@
+body:not(.is-mobile).tabs-simplified {
+  .mod-root {
+    .workspace-tab-header-container {
+      align-items: center;
+      padding-inline: var(--size-4-2);
+    }
+
+    .workspace-tabs:not(.mod-stacked) {
+      .workspace-tab-header-container-inner {
+        gap: var(--size-2-3);
+        padding-top: 3px;
+        padding-left: 0;
+        margin: var(--size-2-3) 0 var(--size-2-3) 5px;
+      }
+
+      .workspace-tab-header,
+      .workspace-tab-header-inner {
+        &::before,
+        &::after {
+          content: unset;
+        }
+      }
+
+      .workspace-tab-header {
+        padding: 0;
+        border-radius: var(--tab-radius);
+        box-shadow: unset;
+
+        &.is-active {
+          background-color: var(--tab-background);
+        }
+      }
+
+      .workspace-tab-header-inner {
+        height: var(--tab-height);
+        padding: var(--size-2-1) var(--size-4-2) var(--size-2-1) var(--size-4-3);
+        background-color: var(--tab-background);
+        border-radius: var(--tab-radius);
+        transition: background-color var(--transition-fast);
+
+        &:not(.is-active):is(:focus, :focus-within, :hover) {
+          background-color: var(--mono-05);
+        }
+      }
+    }
+
+    .workspace-tab-header-new-tab,
+    .workspace-tab-header-tab-list {
+      padding-block: 3px 0;
+    }
+  }
+
+  &.is-focused .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+    .workspace-tab-header-inner {
+      background-color: var(--accent-background);
+    }
+  }
+}
+
+/**
+ * Responsive tabs
+ */
+body:not(.is-mobile).tabs-simplified {
+  .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+    @container tab-header (width < 100px) {
+      .workspace-tab-header-inner-title {
+        margin-inline: 2px;
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@use "color-scales";
+@use "color-kanagawa-wave";
+
+/**
+ * Global colors
+ */
+body {
+  &.theme-light,
+  &.theme-dark {
+    --accent-background: hsl(var(--color-accent-hsl), 0.1);
+    --accent-outline-color: hsl(var(--color-accent-hsl), 0.3);
+
+    --color-mono: var(--dark-mode-neutral);
+    --color-mono-rgb: var(--dark-mode-neutral-rgb);
+    --color-red: var(--color-kanagawa-red-3);
+    --color-red-rgb: var(--dark-mode-red-rgb);
+    --color-green: var(--color-kanagawa-green-2);
+    --color-green-rgb: var(--dark-mode-green-rgb);
+    --color-yellow: var(--color-kanagawa-yellow-4);
+    --color-yellow-rgb: var(--dark-mode-yellow-rgb);
+    --color-blue: var(--color-kanagawa-blue-2);
+    --color-blue-rgb: var(--dark-mode-blue-rgb);
+    --color-purple: var(--color-kanagawa-purple-6);
+    --color-purple-rgb: var(--dark-mode-purple-rgb);
+    --color-cyan: var(--color-kanagawa-blue-3);
+    --color-cyan-rgb: var(--dark-mode-cyan-rgb);
+    --color-orange: var(--color-kanagawa-yellow-5);
+    --color-orange-rgb: var(--dark-mode-orange-rgb);
+    --color-pink: var(--color-kanagawa-red-2);
+    --color-pink-rgb: var(--dark-mode-pink-rgb);
+
+    --mono-05: rgb(var(--mono-rgb-100), 0.05);
+    --mono-10: rgb(var(--mono-rgb-100), 0.1);
+    --mono-15: rgb(var(--mono-rgb-100), 0.15);
+    --mono-20: rgb(var(--mono-rgb-100), 0.2);
+    --mono-25: rgb(var(--mono-rgb-100), 0.25);
+    --mono-50: rgb(var(--mono-rgb-100), 0.5);
+    --mono-55: rgb(var(--mono-rgb-100), 0.55);
+    --mono-60: rgb(var(--mono-rgb-100), 0.6);
+    --mono-75: rgb(var(--mono-rgb-100), 0.75);
+    --mono-85: rgb(var(--mono-rgb-100), 0.85);
+    --mono-90: rgb(var(--mono-rgb-100), 0.9);
+  }
+}
+
+/**
+ * Light scheme
+ */
+body.theme-light {
+  --accent-dots-intensity: 0.6;
+
+  --tab-outline-color: hsl(var(--accent-h), 10%, 85%);
+
+  --shadow-s: 0 6px 24px 0 rgb(0 0 0 / 5%);
+  --shadow-m: 0 10px 30px -3px hsl(var(--accent-h), 80%, 5%, 6%), 0 20px 60px -5px hsl(var(--accent-h), 50%, 10%, 2%);
+
+  &.is-translucent:not(.is-popout-window) {
+    --workspace-background-translucent: rgb(var(--mono-rgb-0), calc(var(--light-opacity, 60) / 100));
+  }
+
+  &:not(.is-translucent, .no-ribbon-gradient) {
+    --ribbon-background: linear-gradient(hsl(var(--accent-h), 100%, 98%, 60%), transparent) !important;
+  }
+}
+
+/**
+ * Dark scheme
+ */
+body.theme-dark {
+  --callout-border-opacity: 0.15;
+  --accent-dots-intensity: 0.25;
+
+  --tab-outline-color: hsl(var(--accent-h), 10%, 22%);
+
+  --shadow-s: 0 6px 24px 0 rgb(0 0 0 / 10%);
+  --shadow-m: 0 10px 30px -3px hsl(var(--accent-h), 50%, 5%, 40%), 0 20px 60px -5px hsl(var(--accent-h), 10%, 10%, 10%);
+
+  &.is-translucent:not(.is-popout-window) {
+    --workspace-background-translucent: rgb(0 0 0 / calc(var(--dark-opacity, 60) / 100));
+  }
+
+  &.is-focused:not(.is-translucent, .no-ribbon-gradient) {
+    --ribbon-background: linear-gradient(hsl(var(--accent-h), 20%, 40%, 20%), transparent) !important;
+  }
+}

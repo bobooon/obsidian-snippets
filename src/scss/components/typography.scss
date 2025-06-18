@@ -1,0 +1,44 @@
+body {
+  --file-line-width: 750px;
+
+  --line-height-normal: 1.8;
+  --line-height-tight: 1.3;
+
+  --font-ui-smallest: 11px;
+
+  --p-spacing: var(--size-4-6);
+  --p-spacing-tight: var(--size-4-4);
+
+  --text-highlight-bg: rgb(var(--color-orange-rgb), 0.4);
+}
+
+p,
+.footnotes {
+  text-wrap: pretty;
+}
+
+del,
+.cm-s-obsidian .cm-strikethrough {
+  color: var(--color-red);
+}
+
+.external-link {
+  padding: unset;
+  background-image: unset;
+}
+
+.footnotes {
+  color: var(--text-faint);
+}
+
+.cm-s-obsidian :is(span, .cm-line):is(.cm-footref, .cm-blockid, .HyperMD-footnote) {
+  position: static;
+  font-size: var(--text-size-normal);
+  vertical-align: inherit;
+  color: var(--text-faint);
+}
+
+.markdown-rendered mark {
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-l);
+}

@@ -1,0 +1,379 @@
+/*! @settings
+
+name: Mod
+id: mod
+settings:
+  #
+  # Style
+  #
+  - id: style
+    title: Style
+    type: heading
+    level: 3
+    collapsed: true
+  - id: tabs
+    title: Tabs
+    type: class-select
+    allowEmpty: false
+    default: tabs-native
+    options:
+      - label: Native
+        value: tabs-native
+      - label: Simplified
+        value: tabs-simplified
+  - id: roundness
+    title: Roundness
+    type: variable-number-slider
+    default: 8
+    min: 0
+    max: 15
+    step: 1
+    format: px
+
+  #
+  # Blockquote
+  #
+  - id: blockquote
+    title: Blockquote
+    type: heading
+    level: 3
+    collapsed: true
+  - id: blockquote-accent
+    title: Accent
+    type: class-select
+    allowEmpty: true
+    default: blockquote-accent-dots
+    options:
+      - label: Dots
+        value: blockquote-accent-dots
+  - id: blockquote-notch-thickness
+    title: Notch thickness
+    type: variable-number-slider
+    default: 6
+    min: 0
+    max: 10
+    step: 1
+    format: px
+
+  #
+  # Callout
+  #
+  - id: callout
+    title: Callout
+    type: heading
+    level: 3
+    collapsed: true
+  - id: callout-accent
+    title: Accent
+    type: class-select
+    allowEmpty: true
+    default: callout-accent-dots
+    options:
+      - label: Dots
+        value: callout-accent-dots
+  - id: no-callout-uppercase
+    title: Disable uppercase title
+    type: class-toggle
+  - id: no-callout-accent
+    title: Disable color accents in the content
+    type: class-toggle
+
+  #
+  # Canvas
+  #
+  - id: canvas
+    title: Canvas
+    type: heading
+    level: 3
+    collapsed: true
+  - id: no-canvas-centered
+    title: Disable center alignment
+    type: class-toggle
+  - id: no-canvas-accent
+    title: Disable color accents in the content
+    type: class-toggle
+
+  #
+  # Heading
+  #
+  - id: heading
+    title: Heading
+    type: heading
+    level: 3
+    collapsed: true
+  - id: h1-font
+    title: Font
+    type: variable-text
+    default: '"SF Pro Display", var(--font-text)'
+  - id: h1-color
+    title: H1 Color
+    type: variable-themed-color
+    format: hex
+    opacity: true
+    default-light: "#000"
+    default-dark: "#fff"
+  - id: h1-accent
+    title: H1 Accent
+    type: class-select
+    allowEmpty: true
+    default: h1-accent-border-bottom
+    options:
+      - label: Border Top
+        value: h1-accent-border-top
+      - label: Border Bottom
+        value: h1-accent-border-bottom
+      - label: Curvy Top
+        value: h1-accent-curvy-top
+      - label: Curvy Bottom
+        value: h1-accent-curvy-bottom
+  - id: h2-color
+    title: H2 Color
+    type: variable-themed-color
+    format: hex
+    opacity: true
+    default-light: "#000"
+    default-dark: "#fff"
+  - id: h2-accent
+    title: H2 Accent
+    type: class-select
+    allowEmpty: true
+    default: h2-accent-curvy-bottom
+    options:
+      - label: Border Top
+        value: h2-accent-border-top
+      - label: Border Bottom
+        value: h2-accent-border-bottom
+      - label: Curvy Top
+        value: h2-accent-curvy-top
+      - label: Curvy Bottom
+        value: h2-accent-curvy-bottom
+  - id: h3-color
+    title: H3 Color
+    type: variable-themed-color
+    format: hex
+    opacity: true
+    default-light: "#000"
+    default-dark: "#fff"
+  - id: h3-accent
+    title: H3 Accent
+    type: class-select
+    allowEmpty: true
+    default: none
+    options:
+      - label: Border Top
+        value: h3-accent-border-top
+      - label: Border Bottom
+        value: h3-accent-border-bottom
+      - label: Curvy Top
+        value: h3-accent-curvy-top
+      - label: Curvy Bottom
+        value: h3-accent-curvy-bottom
+  - id: h4-color
+    title: H4 Color
+    type: variable-themed-color
+    format: hex
+    opacity: true
+    default-light: "#000"
+    default-dark: "#fff"
+  - id: h4-accent
+    title: H4 Accent
+    type: class-select
+    allowEmpty: true
+    default: none
+    options:
+      - label: Border Top
+        value: h4-accent-border-top
+      - label: Border Bottom
+        value: h4-accent-border-bottom
+      - label: Curvy Top
+        value: h4-accent-curvy-top
+      - label: Curvy Bottom
+        value: h4-accent-curvy-bottom
+  - id: h5-color
+    title: H5 Color
+    type: variable-themed-color
+    format: hex
+    opacity: true
+    default-light: "#000"
+    default-dark: "#fff"
+  - id: h5-color
+    title: H5 Accent
+    type: class-select
+    allowEmpty: true
+    default: none
+    options:
+      - label: Border Top
+        value: h5-accent-border-top
+      - label: Border Bottom
+        value: h5-accent-border-bottom
+      - label: Curvy Top
+        value: h5-accent-curvy-top
+      - label: Curvy Bottom
+        value: h5-accent-curvy-bottom
+  - id: h6-color
+    title: H6 Color
+    type: variable-themed-color
+    format: hex
+    opacity: true
+    default-light: "#000"
+    default-dark: "#fff"
+  - id: h6-accent
+    title: H6 Accent
+    type: class-select
+    allowEmpty: true
+    default: none
+    options:
+      - label: Border Top
+        value: h6-accent-border-top
+      - label: Border Bottom
+        value: h6-accent-border-bottom
+      - label: Curvy Top
+        value: h6-accent-curvy-top
+      - label: Curvy Bottom
+        value: mod-h6-accent-curvy-bottom
+
+  #
+  # Table
+  #
+  - id: table
+    title: Table
+    type: heading
+    level: 3
+    collapsed: true
+  - id: table-accent
+    title: Accent
+    type: class-select
+    allowEmpty: true
+    default: table-accent-dots
+    options:
+      - label: Dots
+        value: table-accent-dots
+  - id: no-table-wide
+    title: Disable full-width
+    type: class-toggle
+  - id: no-table-col-alt
+    title: Disable alternating column background
+    type: class-toggle
+  - id: no-table-row-alt
+    title: Disable alternating row background
+    type: class-toggle
+  - id: table-numbered
+    title: Numbered rows
+    type: class-select
+    allowEmpty: true
+    default: table-numbered-desktop
+    options:
+      - label: On
+        value: table-numbered
+      - label: Desktop only
+        value: table-numbered-desktop
+      - label: Mobile only
+        value: table-numbered-mobile
+  - id: table-code-wrap
+    title: Wrap inline code
+    type: class-select
+    allowEmpty: true
+    default: table-code-wrap-mobile
+    options:
+      - label: On
+        value: table-code-wrap
+      - label: Desktop only
+        value: table-code-wrap-desktop
+      - label: Mobile only
+        value: table-code-wrap-mobile
+
+  #
+  # Translucent
+  #
+  - id: translucent
+    title: Translucent
+    type: heading
+    level: 3
+    collapsed: true
+  - id: light-opacity
+    title: Light scheme
+    type: variable-number-slider
+    default: 90
+    min: 90
+    max: 100
+    step: 1
+  - id: dark-opacity
+    title: Dark scheme
+    type: variable-number-slider
+    default: 60
+    min: 1
+    max: 100
+    step: 1
+
+  #
+  # Minimized
+  #
+  - id: minimize
+    title: Minimize
+    type: heading
+    level: 3
+    collapsed: true
+  - id: no-min-canvas-controls
+    title: Disable minimized canvas controls
+    type: class-toggle
+  - id: no-min-graph-controls
+    title: Disable minimized graph controls
+    type: class-toggle
+  - id: no-min-add-property-button
+    title: Disable minimized add property button
+    type: class-toggle
+  - id: no-min-ribbon-actions
+    title: Disable minimized ribbon actions
+    type: class-toggle
+    default: true
+  - id: no-min-sidebar-nav
+    title: Disable minimized sidebar navigation
+    type: class-toggle
+  - id: no-min-status
+    title: Disable minimized status bar
+    type: class-toggle
+
+  #
+  # Other
+  #
+  - id: other
+    title: Other
+    type: heading
+    level: 3
+    collapsed: true
+  - id: no-document-shadow
+    title: Disable document shadow
+    type: class-toggle
+  - id: no-transition-delay
+    title: Disable hover animation delay
+    type: class-toggle
+  - id: no-mono-dates
+    title: Disable monospace dates
+    type: class-toggle
+  - id: no-mono-tags
+    title: Disable monospace file tags
+    type: class-toggle
+  - id: no-mono-numbers
+    title: Disable monospace numbers
+    type: class-toggle
+  - id: no-empty-actions
+    title: Disable new tab actions
+    type: class-toggle
+  - id: no-empty-title
+    title: Disable new tab title
+    type: class-toggle
+    default: true
+  - id: no-property-pills
+    title: Disable property pills
+    type: class-toggle
+  - id: no-ribbon-gradient
+    title: Disable ribbon gradient
+    type: class-toggle
+  - id: no-scroll-fade
+    title: Disable scroll fade on documents
+    type: class-toggle
+  - id: no-scroll-line
+    title: Disable scroll line on sidebar panes
+    type: class-toggle
+
+*/

@@ -1,0 +1,89 @@
+.callout[data-callout*="<card"] {
+  --callout-card-columns: 1fr;
+  --callout-card-list-spacing: 0.3em;
+
+  .callout-content > ul {
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: var(--callout-card-columns);
+    gap: var(--size-4-2);
+    margin-left: 0;
+    font-size: var(--font-small);
+    line-height: var(--line-height-tight);
+
+    &,
+    ul {
+      list-style: none;
+
+      &::before {
+        content: unset;
+      }
+    }
+
+    ul,
+    ul li {
+      position: static;
+    }
+
+    li {
+      margin-inline: 0;
+    }
+
+    > li {
+      padding: var(--size-4-3) var(--size-4-4);
+      border: 1px solid var(--mono-10);
+      border-radius: var(--callout-radius);
+
+      ul,
+      li:not(.task-list-item) {
+        margin-top: var(--callout-card-list-spacing);
+      }
+
+      li:has(+ li.task-list-item) {
+        margin-bottom: var(--callout-card-list-spacing);
+      }
+
+      li {
+        color: var(--text-muted);
+      }
+
+      > a::before {
+        position: absolute;
+        inset: 0;
+        content: "";
+      }
+    }
+
+    &.contains-task-list > li.task-list-item,
+    &.contains-task-list > li:has(ul.contains-task-list) {
+      padding-inline: var(--size-4-9);
+    }
+
+    .list-bullet,
+    .list-collapse-indicator {
+      display: none;
+    }
+  }
+
+  @media screen and (width >= 750px) {
+    &[data-callout*="<card(2)>"],
+    &[data-callout*="<card(3)>"],
+    &[data-callout*="<card(4)>"] {
+      --callout-card-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (width >= 1000px) {
+    &[data-callout*="<card(3)>"] {
+      --callout-card-columns: repeat(3, 1fr);
+    }
+
+    &[data-callout*="<card(4)>"] {
+      --callout-card-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.popover.hover-popover .callout[data-callout*="<card"] {
+  --callout-card-columns: 1fr !important;
+}

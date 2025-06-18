@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "vite build --watch --mode dev",
+    "build": "vite build",
+    "build:icons": "node src/js/build-icons.mts",
+    "build:settings": "node src/js/build-settings.mts",
+    "sync": "find \"$OBSIDIAN\" -type d -path \"*/.obsidian/themes\" -exec cp -rf public/. {}/Mod \\;"
+  },
+  "devDependencies": {
+    "@iconify-json/catppuccin": "^1.2.11",
+    "@iconify-json/lucide": "^1.2.45",
+    "@types/node": "^24.0.3",
+    "sass-embedded": "^1.89.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}

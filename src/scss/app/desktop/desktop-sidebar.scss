@@ -1,0 +1,196 @@
+@use "../../abstracts/variables" as *;
+
+body:not(.is-mobile) {
+  .mod-sidedock:is(.mod-left-split, .mod-right-split) {
+    max-width: 40vw;
+  }
+
+  .mod-root {
+    min-width: calc(20vw - (var(--size-4-1) * 2));
+  }
+
+  .mod-sidedock.mod-left-split > .workspace-leaf-resize-handle {
+    right: calc(var(--size-2-3) * -1);
+  }
+
+  .mod-sidedock.mod-right-split > .workspace-leaf-resize-handle {
+    left: calc(var(--size-2-3) * -1);
+  }
+
+  /**
+   * Tabs
+   */
+  .mod-sidedock .workspace-tabs {
+    --icon-size: var(--icon-s);
+
+    padding: var(--size-4-3) 0;
+
+    &.mod-top {
+      padding-top: var(--size-4-2);
+    }
+
+    &:last-child {
+      padding-bottom: var(--size-2-2);
+    }
+
+    .workspace-leaf-resize-handle {
+      border-color: var(--mono-10);
+    }
+
+    .workspace-tab-header-container {
+      height: var(--tab-height);
+      padding-inline: var(--scrollbar-width) !important;
+      border: unset;
+    }
+
+    .workspace-tab-header-container-inner {
+      gap: 2px;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      background: var(--tab-background);
+      border-radius: var(--tab-radius);
+    }
+
+    .workspace-tab-header {
+      flex-grow: 1;
+      border-radius: var(--tab-radius);
+
+      &:not(.is-active):is(:focus, :focus-within, :hover) .workspace-tab-header-inner {
+        background-color: transparent;
+      }
+    }
+
+    .workspace-tab-header-inner {
+      padding: 0 var(--size-4-3);
+    }
+
+    .workspace-leaf-content {
+      padding-inline: 0;
+
+      .view-content {
+        padding: var(--size-2-1) var(--scrollbar-width);
+        overflow-x: hidden;
+        scrollbar-gutter: auto;
+      }
+    }
+  }
+
+  &.is-focused {
+    .mod-sidedock .workspace-tabs .workspace-tab-header.is-active {
+      outline: 1px solid var(--accent-outline-color);
+      outline-offset: -1px;
+      background-color: var(--accent-background);
+
+      * {
+        color: var(--text-accent);
+      }
+    }
+  }
+
+  /**
+   * Navigation
+   */
+  .mod-sidedock .workspace-tabs .nav-header {
+    padding: var(--size-4-2) var(--scrollbar-width);
+
+    .nav-buttons-container {
+      gap: var(--size-4-4);
+      align-items: center;
+      height: var(--tab-height);
+      border-radius: var(--tab-radius);
+
+      ~ div {
+        margin-block: var(--size-2-2);
+      }
+    }
+
+    .nav-action-button {
+      height: var(--tab-height);
+      padding: 0;
+      background-color: transparent;
+    }
+  }
+
+  /**
+   * Minimize navigation
+   */
+  &:not(.no-min-sidebar-nav) {
+    .mod-sidedock .workspace-tabs {
+      .nav-header {
+        .nav-buttons-container,
+        .svg-icon {
+          transition-duration: var(--transition-fast);
+          transition-property: gap, height, width;
+        }
+
+        .nav-action-button {
+          transition-duration: var(--transition-fastest), var(--transition-fast);
+          transition-property: background-color, height, margin, padding;
+        }
+      }
+
+      .nav-header:not(:focus, :focus-within, :hover) {
+        --icon-size: 0;
+
+        .nav-buttons-container {
+          gap: var(--size-4-2);
+        }
+
+        .nav-action-button {
+          flex-grow: 0;
+          height: 5px;
+          padding: 3px;
+          margin-inline: var(--size-2-1);
+          pointer-events: none;
+          background-color: var(--mono-20);
+          transition-duration: var(--transition-fast), var(--transition-fastest);
+
+          &.is-active {
+            background-color: hsl(var(--interactive-accent-hsl), 0.6);
+          }
+        }
+      }
+    }
+
+    &:not(.no-transition-delay) {
+      .mod-sidedock .workspace-tabs .nav-header:is(:focus, :focus-within, :hover) {
+        .nav-buttons-container,
+        .svg-icon,
+        .nav-action-button {
+          transition-delay: var(--transition-delay-fast);
+        }
+      }
+    }
+  }
+
+  /**
+   * Markdown views
+   */
+  .mod-sidedock .view-content:has(> .cm-scroller > .markdown-preview-view),
+  .mod-sidedock .view-content:has(> .markdown-reading-view) {
+    --file-margins: var(--size-4-5) var(--size-4-4);
+    --p-spacing: var(--size-4-4);
+    --heading-spacing: calc(var(--p-spacing) * 1.75);
+
+    padding: 0 !important;
+    background-color: var(--background-primary);
+    border: var(--tab-outline-width) solid var(--tab-outline-color);
+    border-radius: var(--radius-m);
+
+    &::before {
+      content: unset;
+    }
+  }
+
+  /**
+   * Vault
+   */
+  .mod-sidedock.mod-left-split .workspace-sidedock-vault-profile {
+    border-top: 1px solid var(--mono-10);
+
+    .workspace-drawer-vault-switcher {
+      border-radius: var(--radius-m);
+    }
+  }
+}

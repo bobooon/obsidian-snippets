@@ -1,0 +1,87 @@
+body:not(.no-canvas-accent) .canvas-node.is-themed {
+  --canvas-accent: color-mix(in oklab, rgb(var(--canvas-color)) 90%, rgb(var(--mono-rgb-100)));
+  --canvas-accent-hover: color-mix(in oklab, rgb(var(--canvas-color)) 60%, rgb(var(--mono-rgb-100)));
+
+  --link-color: var(--canvas-accent);
+  --link-color-hover: var(--canvas-accent-hover);
+  --link-external-color: var(--link-color);
+  --link-external-color-hover: var(--link-color-hover);
+  --link-unresolved-color: var(--link-color);
+  --link-unresolved-color-hover: var(--link-color-hover);
+
+  :not(pre) > code.syntax-inline {
+    color: var(--canvas-accent);
+    background-color: rgb(var(--canvas-color), 0.1);
+  }
+}
+
+.canvas-control-group {
+  border-radius: var(--radius-m);
+}
+
+.canvas-group-label,
+.canvas-path-label {
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-medium);
+}
+
+.canvas-node-container {
+  border-width: 1px;
+}
+
+.canvas-card-menu {
+  border-radius: var(--radius-m);
+}
+
+body {
+  &:not(.is-mobile) .mod-sidedock {
+    .canvas-wrapper {
+      border: var(--tab-outline-width) solid var(--tab-outline-color);
+      border-radius: var(--radius-m);
+    }
+
+    .canvas-card-menu {
+      display: none;
+    }
+  }
+
+  &:not(.no-canvas-centered) .canvas-node-content.markdown-embed {
+    &:not(.is-loaded) {
+      text-align: center;
+    }
+
+    .markdown-embed-content > .markdown-preview-view {
+      padding: 0;
+    }
+  }
+}
+
+/**
+ * Minimize controls
+ */
+body:not(.no-min-canvas-controls) {
+  .canvas-controls {
+    width: calc-size(auto, size);
+    transition-delay: var(--transition-delay-fast);
+    transition-duration: var(--transition-fast);
+    transition-property: width;
+
+    &::before {
+      position: absolute;
+      inset: calc(var(--size-4-2) * -1);
+      content: "";
+    }
+
+    .canvas-control-group {
+      z-index: 1;
+    }
+
+    &:not(:focus, :focus-within, :hover) {
+      width: 5px;
+
+      > * {
+        pointer-events: none;
+      }
+    }
+  }
+}

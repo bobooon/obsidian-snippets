@@ -1,0 +1,111 @@
+body {
+  --code-size: var(--font-smallest);
+  --code-border-width: 1px;
+  --code-radius: var(--radius-m);
+
+  &.theme-light,
+  &.theme-dark {
+    --code-background: var(--mono-10);
+    --code-normal: var(--text-normal);
+    --code-function: var(--color-kanagawa-blue-2);
+    --code-important: var(--color-kanagawa-purple-6);
+    --code-keyword: var(--color-kanagawa-purple-6);
+    --code-operator: var(--color-kanagawa-yellow-3);
+    --code-parameter: var(--color-kanagawa-purple-7);
+    --code-property: var(--color-kanagawa-blue-2);
+    --code-punctuation: var(--color-kanagawa-blue-1);
+    --code-string: var(--color-kanagawa-green-2);
+    --code-tag: var(--color-kanagawa-blue-2);
+    --code-value: var(--color-kanagawa-red-2);
+    --code-variable: var(--color-kanagawa-red-3);
+  }
+}
+
+pre:has(code),
+div.HyperMD-codeblock-bg {
+  --code-background: var(--background-primary-alt);
+}
+
+pre:has(code) {
+  box-shadow: var(--shadow-s);
+}
+
+:not(pre) > code[class*="language-"]:not(.syntax-block) {
+  padding: 0.1em 0.4em;
+}
+
+.mermaid {
+  text-align: center;
+}
+
+.token {
+  font-weight: var(--font-normal) !important;
+}
+
+.token:is(.variable, .constant) {
+  color: var(--code-parameter);
+}
+
+.token.variable .token.variable {
+  color: var(--code-keyword);
+}
+
+.token:is(.selector, .imports) {
+  color: var(--code-property);
+}
+
+.token.punctuation + .token + .token.keyword.module {
+  color: var(--code-value);
+}
+
+.token.known-class-name {
+  color: var(--code-value);
+}
+
+.token.spread {
+  color: var(--code-normal);
+}
+
+code:is(.language-css, .language-sass, .language-scss) {
+  color: var(--code-string);
+
+  .token.property {
+    color: var(--code-normal);
+  }
+
+  .token.variable {
+    color: var(--code-variable);
+  }
+}
+
+code {
+  &.language-javascript,
+  &.language-js,
+  &.language-typescript,
+  &.language-ts,
+  &.language-jsx,
+  &.language-tsx {
+    color: var(--code-parameter);
+  }
+}
+
+code {
+  &.language-bash,
+  &.language-sh,
+  &.language-shell {
+    .token:is(.variable, .constant) {
+      color: var(--code-normal);
+    }
+  }
+}
+
+code {
+  &.language-yml,
+  &.language-yaml {
+    color: var(--code-normal);
+
+    .token.punctuation {
+      color: var(--code-operator);
+    }
+  }
+}

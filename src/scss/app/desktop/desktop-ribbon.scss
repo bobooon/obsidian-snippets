@@ -1,0 +1,151 @@
+body:not(.is-mobile) {
+  --ribbon-frame-width: 85px;
+  --ribbon-height: var(--header-height);
+  --ribbon-background: transparent;
+
+  /**
+   * Ribbon toolbar
+   */
+  .workspace-ribbon.mod-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: var(--ribbon-height);
+    padding: 0;
+    margin: 0;
+    background: var(--ribbon-background);
+    border: unset;
+    -webkit-app-region: drag;
+
+    &::before {
+      content: unset;
+    }
+
+    .side-dock-actions {
+      flex-direction: row;
+      align-items: center;
+      overflow-x: auto;
+      -webkit-app-region: no-drag;
+    }
+  }
+
+  &.is-hidden-frameless .workspace-ribbon.mod-left {
+    padding-inline: calc(var(--ribbon-frame-width) + var(--size-4-12)) var(--size-4-12);
+  }
+
+  &.is-frameless:not(.is-hidden-frameless) .workspace-ribbon.mod-left {
+    top: var(--titlebar-height);
+  }
+
+  &.is-frameless:not(.is-hidden-frameless),
+  :not(.is-frameless) {
+    .workspace-ribbon.mod-left {
+      padding-inline: var(--size-4-12);
+    }
+  }
+
+  &:not(.show-ribbon) .workspace-ribbon.mod-left .side-dock-actions {
+    display: none;
+  }
+
+  /**
+   * Minimize ribbon actions
+   */
+  &:not(.no-min-ribbon-actions) {
+    .workspace-ribbon.mod-left .side-dock-actions {
+      height: var(--ribbon-height);
+      padding-inline: var(--size-4-9);
+
+      .side-dock-ribbon-action {
+        position: relative;
+        overflow: hidden;
+        background: unset;
+
+        &::before {
+          position: absolute;
+          inset: 0;
+          content: "";
+        }
+
+        &:hover::before {
+          background-color: var(--background-modifier-hover);
+        }
+      }
+
+      &,
+      .side-dock-ribbon-action,
+      .svg-icon {
+        transition-duration: var(--transition-fast);
+        transition-property: gap, padding, width, height, background;
+      }
+
+      &:not(:focus, :focus-within, :hover) {
+        gap: var(--size-4-3);
+
+        .side-dock-ribbon-action {
+          padding: 3px;
+          pointer-events: none;
+          background: var(--mono-15);
+
+          .svg-icon {
+            --icon-size: 0;
+          }
+        }
+      }
+    }
+
+    &:not(.no-transition-delay) {
+      .workspace-ribbon.mod-left:is(:focus, :focus-within, :hover) .side-dock-actions {
+        &,
+        .side-dock-ribbon-action,
+        .svg-icon {
+          transition-delay: var(--transition-delay-fast);
+        }
+      }
+    }
+  }
+
+  /**
+   * Sidebar toggles
+   */
+  .sidebar-toggle-button {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    align-items: center;
+    justify-content: end;
+    width: auto !important;
+    height: var(--tab-height);
+    padding: 0 !important;
+    margin: calc((var(--ribbon-height) - var(--tab-height)) * 0.5) 0 !important;
+    background: unset !important;
+
+    &.mod-left {
+      left: var(--size-4-2) !important;
+    }
+
+    &.mod-right {
+      right: var(--size-4-2) !important;
+    }
+  }
+
+  &.is-hidden-frameless .sidebar-toggle-button.mod-left {
+    left: var(--ribbon-frame-width) !important;
+  }
+
+  &.is-frameless:not(.is-hidden-frameless) .sidebar-toggle-button {
+    top: var(--titlebar-height);
+  }
+
+  &.is-grabbing:has(.workspace-drop-overlay) .sidebar-toggle-button,
+  &:has(.mod-root .sidebar-toggle-button.mod-left) .mod-sidedock .sidebar-toggle-button.mod-left,
+  &:has(.mod-root .sidebar-toggle-button.mod-right) .mod-sidedock .sidebar-toggle-button.mod-right {
+    display: none;
+  }
+}

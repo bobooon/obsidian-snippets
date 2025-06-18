@@ -1,0 +1,40 @@
+@use "../abstracts/mixins" as *;
+
+body {
+  --blockquote-background-color: var(--mono-05);
+  --blockquote-border-color: var(--accent-background);
+  --blockquote-notch-thickness: 6px;
+  --blockquote-border-thickness: 2px;
+}
+
+.markdown-rendered blockquote {
+  position: relative;
+  padding-block: var(--size-4-4);
+  padding-inline: calc(var(--blockquote-notch-thickness) + var(--size-4-5)) var(--size-4-5);
+  background-color: var(--blockquote-background-color);
+  border: unset;
+  border-radius: var(--radius-m);
+
+  &::before {
+    position: absolute;
+    inset-block: var(--size-4-3);
+    left: var(--size-4-2);
+    width: var(--blockquote-notch-thickness);
+    content: "";
+    background-color: var(--blockquote-border-color);
+    border-radius: var(--radius-m);
+  }
+}
+
+/**
+ * Dots accent
+ */
+body.mod-blockquote-accent-dots {
+  .markdown-rendered blockquote {
+    @include dots;
+  }
+
+  .markdown-rendered blockquote blockquote {
+    background-image: unset;
+  }
+}

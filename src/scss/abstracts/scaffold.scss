@@ -1,0 +1,45 @@
+@use "reset";
+@use "../colors/color";
+
+@use "../app/editor";
+@use "../app/search";
+@use "../app/workspace";
+
+@use "../app/desktop/desktop-leaf";
+@use "../app/desktop/desktop-modal";
+@use "../app/desktop/desktop-nav";
+@use "../app/desktop/desktop-normalize";
+@use "../app/desktop/desktop-popover";
+@use "../app/desktop/desktop-ribbon";
+@use "../app/desktop/desktop-scroll";
+@use "../app/desktop/desktop-search";
+@use "../app/desktop/desktop-sidebar";
+@use "../app/desktop/desktop-status";
+@use "../app/desktop/desktop-tabs";
+@use "../app/desktop/desktop-window";
+
+@use "../components/blockquote";
+@use "../components/callout";
+@use "../components/code";
+@use "../components/embed";
+@use "../components/empty";
+@use "../components/heading";
+@use "../components/input";
+@use "../components/list";
+@use "../components/media";
+@use "../components/pdf";
+@use "../components/properties";
+@use "../components/query";
+@use "../components/table";
+@use "../components/typography";
+
+@use "../plugins/native/canvas";
+@use "../plugins/native/graph";
+
+@use "../plugins/community/style-settings";
+
+@use "../features/code-block";
+@use "../features/icons";
+@use "../features/list-card";
+@use "../features/mini-callout";
+@use "../features/table-numbered";

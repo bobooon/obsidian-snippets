@@ -1,0 +1,9 @@
+body:not(.is-mobile) .tooltip {
+  padding: var(--size-4-2) var(--size-4-3);
+  border-radius: var(--radius-m);
+  backdrop-filter: blur(var(--blur-m));
+}
+
+.popover.hover-popover > .markdown-embed .markdown-embed .markdown-preview-view {
+  padding: 0;
+}

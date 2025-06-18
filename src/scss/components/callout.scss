@@ -1,0 +1,98 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+body {
+  --callout-title-size: var(--font-ui-smaller);
+  --callout-padding: var(--size-4-4) var(--size-4-5);
+  --callout-background-opacity: 0.1;
+  --callout-border-width: 1px;
+  --callout-radius: var(--radius-m);
+}
+
+body:not(.no-callout-accent) .callout {
+  --callout-accent: color-mix(in oklab, rgb(var(--callout-color)) 90%, rgb(var(--mono-rgb-100)));
+  --callout-accent-hover: color-mix(in oklab, rgb(var(--callout-color)) 60%, rgb(var(--mono-rgb-100)));
+
+  --text-selection: rgb(var(--callout-color), 0.3);
+
+  --link-color: var(--callout-accent);
+  --link-color-hover: var(--callout-accent-hover);
+  --link-external-color: var(--link-color);
+  --link-external-color-hover: var(--link-color-hover);
+  --link-unresolved-color: var(--link-color);
+  --link-unresolved-color-hover: var(--link-color-hover);
+
+  :not(pre) > code.syntax-inline {
+    color: var(--callout-accent);
+    background-color: rgb(var(--callout-color), var(--callout-background-opacity));
+  }
+}
+
+.callout {
+  --p-spacing: var(--p-spacing-tight);
+  --background-modifier-border: rgb(var(--callout-color), 0.2);
+
+  margin-block: var(--p-spacing);
+  box-shadow: var(--shadow-s);
+
+  &[data-callout="attention"] {
+    --callout-color: var(--color-red-rgb);
+  }
+
+  &[data-callout="missing"] {
+    --callout-color: var(--color-orange-rgb);
+  }
+
+  &[data-callout="tip"] {
+    --callout-color: var(--color-green-rgb);
+  }
+
+  .callout {
+    background-image: unset;
+    box-shadow: unset;
+  }
+
+  .callout-title {
+    gap: var(--size-4-2);
+  }
+
+  .callout-content {
+    > :first-child {
+      margin-top: var(--p-spacing);
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+body:not(.no-callout-uppercase) .callout-title {
+  text-transform: uppercase;
+}
+
+/**
+ * Colors
+ */
+@each $color in $colors {
+  .callout[data-callout*="<#{'' + $color}>"] {
+    --callout-color: var(--color-#{$color}-rgb);
+
+    .callout-icon {
+      display: none;
+    }
+  }
+}
+
+/**
+ * Dots accent
+ */
+body.callout-accent-dots {
+  .callout {
+    @include dots(rgb(var(--callout-color), var(--callout-background-opacity)));
+  }
+
+  .callout .callout {
+    background-image: unset;
+  }
+}

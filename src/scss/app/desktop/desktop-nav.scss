@@ -1,0 +1,22 @@
+body:not(.is-mobile) {
+  .nav-file-title,
+  .nav-folder-title {
+    line-height: var(--line-height-normal);
+    transition: background-color var(--transition-fast);
+  }
+
+  .nav-folder-title-content,
+  .nav-file-title-content {
+    flex-grow: 1;
+  }
+
+  .nav-file-title,
+  .nav-folder-title,
+  .tree-item-self {
+    border-radius: var(--radius-m);
+  }
+
+  &:not(.no-mono-tags) .nav-file-tag {
+    font-family: var(--font-monospace);
+  }
+}

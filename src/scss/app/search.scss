@@ -1,0 +1,99 @@
+.search-row {
+  gap: var(--size-4-2);
+  margin: var(--size-4-3) var(--scrollbar-width) var(--size-4-2);
+}
+
+.search-info-container {
+  padding: 0;
+
+  div {
+    padding: var(--size-2-1) var(--scrollbar-width) var(--size-4-3);
+  }
+}
+
+.search-params {
+  margin: 0 var(--scrollbar-width) var(--size-4-2);
+}
+
+.search-results-info {
+  flex-direction: column-reverse;
+  gap: var(--size-4-2);
+  align-items: start;
+  padding: 0 var(--scrollbar-width) var(--size-4-2);
+  border-bottom: 0;
+
+  .dropdown {
+    width: 100%;
+    max-width: unset;
+    height: var(--input-height);
+    color: var(--text-normal) !important;
+    text-align-last: start;
+    background-color: var(--background-modifier-form-field);
+    border: var(--input-border-width) solid var(--background-modifier-border);
+
+    &:focus {
+      box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
+    }
+  }
+
+  .search-results-result-count {
+    margin-top: var(--size-2-2);
+  }
+}
+
+.search-result-container {
+  padding: 0 var(--scrollbar-width);
+
+  > .search-results-children {
+    margin-top: var(--size-4-3);
+  }
+}
+
+.tree-item-self + .search-result-container > .search-results-children {
+  margin-top: 0;
+}
+
+.search-result-file-matches {
+  --search-result-background: var(--mono-05);
+  --background-modifier-border: var(--mono-05);
+
+  border-radius: var(--radius-m);
+}
+
+.search-result-file-title {
+  margin-bottom: var(--size-4-2);
+}
+
+.search-results-children > div:last-child .search-result-file-matches {
+  margin-bottom: 0;
+}
+
+.search-empty-state {
+  padding-left: calc(var(--size-4-2) - 1px);
+}
+
+.workspace-leaf-content[data-type="search"] .search-empty-state {
+  padding: var(--size-4-6) var(--size-4-4);
+  text-align: center;
+}
+
+@keyframes pulse {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0.5;
+  }
+}
+
+.is-flashing {
+  background-color: initial !important;
+  border-radius: initial;
+  mix-blend-mode: initial;
+  transition: initial;
+  animation: pulse 1s both 1;
+}

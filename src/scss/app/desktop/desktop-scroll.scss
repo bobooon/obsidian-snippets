@@ -1,0 +1,77 @@
+body:not(.is-mobile) {
+  /**
+   * Scroll fade
+   */
+  &:not(.no-scroll-fade) .mod-root .view-content > .markdown-reading-view > .markdown-rendered,
+  &:not(.no-scroll-fade) .mod-root .view-content:has(.style-settings-container),
+  &:not(.no-scroll-fade) .mod-root .view-content:has(> .cm-scroller) {
+    --scroll-fade-height: var(--size-4-6);
+    --scroll-fade-background: linear-gradient(
+      to bottom,
+      transparent,
+      black var(--scroll-fade-height),
+      black calc(100% - var(--scroll-fade-height)),
+      transparent
+    );
+
+    mask-image: var(--scroll-fade-background), linear-gradient(black, black);
+    mask-repeat: no-repeat, no-repeat;
+    mask-position:
+      0 0,
+      100% 0;
+    mask-size:
+      calc(100% - var(--scrollbar-width)) 100%,
+      var(--scrollbar-width) 100%;
+  }
+
+  // Band-aid solution to provide partial support while in editing mode.
+  &:not(.no-scroll-fade) .mod-root .markdown-source-view > .cm-editor::after {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    height: var(--scroll-fade-height);
+    content: "";
+    background-image: linear-gradient(to top, var(--background-primary), transparent);
+  }
+
+  /**
+   * Scroll line
+   */
+  &:not(.no-scroll-line) .mod-sidedock .backlink-pane,
+  &:not(.no-scroll-line) .mod-sidedock .nav-files-container,
+  &:not(.no-scroll-line) .mod-sidedock .outgoing-link-pane,
+  &:not(.no-scroll-line) .mod-sidedock .tag-container,
+  &:not(.no-scroll-line) .mod-sidedock .workspace-leaf-content > .search-result-container,
+  &:not(.no-scroll-line) .mod-sidedock .workspace-leaf-content > .view-content {
+    --scroll-line-width: 0px;
+    --scroll-line-style: hidden;
+
+    border-top: var(--scroll-line-width) var(--scroll-line-style) var(--background-modifier-border);
+    animation-name: scrollable, scrolled;
+    animation-timeline: scroll(y self), scroll(y self);
+    animation-range:
+      0 1px,
+      1px 2px;
+    animation-fill-mode: both, both;
+
+    @keyframes scrollable {
+      from {
+        --scroll-line-width: 0px;
+      }
+
+      to {
+        --scroll-line-width: 1px;
+      }
+    }
+
+    @keyframes scrolled {
+      from {
+        --scroll-line-style: hidden;
+      }
+
+      to {
+        --scroll-line-style: solid;
+      }
+    }
+  }
+}

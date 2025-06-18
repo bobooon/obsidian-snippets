@@ -1,0 +1,73 @@
+@use "../abstracts/mixins" as *;
+
+body.table-numbered table,
+body.table-numbered-desktop:not(.is-mobile) table,
+body.table-numbered-mobile.is-mobile table,
+.markdown-rendered.table-numbered:not(.cm-embed-block) table {
+  counter-reset: table-row;
+
+  > thead > tr > th:first-child,
+  > tbody > tr > td:first-child {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      width: 3ch;
+      margin-inline: calc(var(--size-4-4) * -0.25) 0;
+      color: var(--text-faint);
+    }
+
+    &:dir(ltr) {
+      padding-left: calc(var(--size-4-4) + 2.4em);
+
+      &::before {
+        left: var(--size-4-3);
+        text-align: right;
+      }
+    }
+
+    &:dir(rtl) {
+      padding-right: calc(var(--size-4-4) + 2.4em);
+      text-align: left;
+
+      &::before {
+        right: var(--size-4-3);
+      }
+    }
+  }
+
+  > tbody > tr {
+    counter-increment: table-row;
+
+    > td:first-child::before {
+      content: counter(table-row);
+    }
+  }
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget table {
+  > thead > tr > th:first-child,
+  > tbody > tr > td:first-child {
+    &::before {
+      padding-block: var(--table-cell-padding);
+    }
+  }
+
+  &:dir(ltr) {
+    > thead > tr > th:first-child,
+    > tbody > tr > td:first-child {
+      .table-cell-wrapper {
+        padding-left: 0;
+      }
+    }
+  }
+
+  &:dir(rtl) {
+    > thead > tr > th:last-child,
+    > tbody > tr > td:last-child {
+      .table-cell-wrapper {
+        padding-right: 0;
+      }
+    }
+  }
+}

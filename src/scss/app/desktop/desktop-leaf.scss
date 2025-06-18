@@ -1,0 +1,20 @@
+body:not(.is-mobile) {
+  .mod-sidedock .workspace-leaf-content:not(:has(.markdown-preview-view)) {
+    --text-faint: var(--mono-25);
+    --text-muted: var(--mono-50);
+
+    --background-primary: var(--mono-05);
+    --background-modifier-border: var(--mono-10);
+    --background-modifier-form-field: var(--mono-05);
+    --background-modifier-border-hover: var(--mono-20);
+    --background-modifier-border-focus: var(--mono-15);
+
+    --interactive-normal: var(--mono-10);
+    --interactive-hover: var(--mono-15);
+
+    --dropdown-background: var(--mono-05);
+    --dropdown-background-hover: var(--mono-10);
+
+    --slider-track-background: var(--background-modifier-border);
+  }
+}

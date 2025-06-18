@@ -1,0 +1,58 @@
+body:not(.is-mobile) {
+  &:not(.is-translucent),
+  &.is-popout-window {
+    background-color: var(--background-secondary);
+
+    .app-container {
+      background-color: var(--accent-background);
+    }
+  }
+
+  &.is-translucent.is-popout-window {
+    --workspace-background-translucent: var(--accent-background);
+  }
+
+  .app-container {
+    padding: 1px;
+
+    div {
+      scrollbar-color: var(--mono-20) transparent;
+      scrollbar-width: thin;
+    }
+  }
+
+  .mod-root {
+    padding: 0 calc(var(--size-2-2) * 0.5) var(--size-2-2);
+
+    .workspace-tab-container {
+      margin: 0 var(--size-2-2) var(--size-2-2);
+    }
+  }
+
+  &:not(.is-popout-window) .mod-root {
+    padding-bottom: var(--size-4-2);
+  }
+
+  &.is-popout-window .mod-root {
+    padding-block: var(--size-2-1);
+  }
+
+  .mod-sidedock {
+    padding: 0 0 calc(var(--size-4-2) - 1px);
+
+    &.mod-left-split {
+      padding-inline: var(--size-4-2) 0;
+    }
+
+    &.mod-right-split {
+      padding-inline: 0 var(--size-4-2);
+    }
+  }
+
+  &:not(.is-popout-window) {
+    .mod-root,
+    .mod-sidedock {
+      padding-top: var(--ribbon-height);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.markdown-source-view.mod-cm6 .edit-block-button {
+  border-radius: var(--radius-m);
+}
+
+.cm-embed-block:not(.cm-table-widget) {
+  --embed-block-shadow-hover: 0 0 0 4px var(--mono-10);
+
+  border-radius: calc(var(--radius-m) - 1px) !important;
+}

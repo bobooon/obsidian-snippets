@@ -1,0 +1,6 @@
+ul > li.task-list-item {
+  > .task-list-item-checkbox,
+  > p > .task-list-item-checkbox {
+    margin-inline-start: calc((var(--checkbox-size) * -1.5) - 1px);
+  }
+}

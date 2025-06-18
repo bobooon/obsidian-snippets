@@ -1,0 +1,10 @@
+img,
+video {
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-s);
+}
+
+audio::-webkit-media-controls-enclosure {
+  background-color: var(--background-primary);
+  border-radius: var(--radius-m);
+}

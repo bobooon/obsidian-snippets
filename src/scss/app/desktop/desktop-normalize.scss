@@ -1,0 +1,43 @@
+/**
+ * Sidebar
+ */
+body:not(.is-mobile) .mod-sidedock .workspace-tabs .workspace-leaf-content {
+  &:not(:has(.nav-header)) > .view-content {
+    margin-top: var(--size-4-4);
+  }
+
+  &[data-type="backlink"],
+  &[data-type="outgoing-link"] {
+    > .view-content {
+      padding: 0;
+    }
+  }
+
+  &[data-type="backlink"] .backlink-pane,
+  &[data-type="file-explorer"] .nav-files-container,
+  &[data-type="outgoing-link"] .outgoing-link-pane,
+  &[data-type="tag"] .tag-container {
+    padding: 0 var(--scrollbar-width);
+    overflow-x: hidden;
+    scrollbar-gutter: auto;
+  }
+}
+
+/**
+ * Markdown views
+ */
+.markdown-preview-view > :first-child {
+  margin-top: 0;
+}
+
+.view-content > .cm-scroller:has(.markdown-preview-view) {
+  max-width: unset;
+  padding: var(--file-margins);
+  margin-inline: unset;
+
+  .markdown-preview-view {
+    max-width: var(--file-line-width);
+    padding: 0;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,34 @@
+body {
+  --button-radius: var(--radius-m);
+  --tag-radius: var(--radius-l);
+  --input-radius: var(--radius-m);
+
+  --transition-fastest: 50ms;
+  --transition-fast: 150ms;
+  --transition-delay-fast: 300ms;
+
+  --roundness: 8px;
+
+  --radius-s: calc(var(--radius-m) - 2px);
+  --radius-m: var(--roundness);
+  --radius-l: calc(var(--radius-m) + 2px);
+  --radius-xl: calc(var(--radius-l) + 4px);
+
+  --blur-s: 6px;
+  --blur-m: 10px;
+  --blur-l: 14px;
+
+  --sidedock-view-content-padding: var(--scroll-fade-height) var(--size-2-2);
+
+  &.mod-macos {
+    --header-height: 40px;
+    --scrollbar-width: 11px;
+  }
+}
+
+.markdown-source-view,
+.markdown-reading-view {
+  --icon-s: 16px;
+  --icon-m: 18px;
+  --icon-l: 18px;
+}

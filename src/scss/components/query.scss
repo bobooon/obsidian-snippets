@@ -1,0 +1,25 @@
+.internal-query {
+  border-top: 0;
+
+  .internal-query-header {
+    padding-bottom: var(--size-4-2);
+  }
+
+  .search-result-container {
+    padding: var(--size-4-3);
+    background-color: var(--background-primary-alt);
+    border: unset;
+
+    > .search-results-children {
+      margin-top: 0;
+    }
+  }
+
+  .search-empty-state {
+    margin-bottom: 0;
+  }
+}
+
+.el-pre:has(.internal-query) + .el-pre:has(.internal-query) {
+  margin-top: var(--p-spacing);
+}
